@@ -1,0 +1,153 @@
+<title>BAYMAX Clicker</title>
+<script src="/p5.js"></script>
+<script src="/p5.min.js"></script>
+<script>
+//Insert code here
+</script>
+ function setup() { 
+  createCanvas(windowWidth, windowHeight);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+//varible_list
+var baybux=0;
+var baybuxps=0;
+var baybiglevel=1;
+var baybig=0;
+var perclickbb=1;
+var microbotcost=20;
+var EMTcost=155;
+var fasterCcost=1000;
+var FmedK =6000;
+var Supgrade1Cost =10000;
+var Supgrade2Cost=20000;
+var x = -75;
+var y = 200;
+var speed=1;
+draw = function() {
+    
+
+//helped by Charles Friend
+
+
+    
+background (117, 17, 117);
+//baymax
+fill (250, 250, 250);
+ellipse (198,200,baybig+100,baybig+100);
+fill (0, 0, 0);
+ellipse(170,180,baybig+10,baybig+10);
+ellipse(baybig+215,180,baybig+10,baybig+10);
+line (170,178,230,178);
+
+//baybux_display
+text("baybux "+floor(baybux),181,321,1570,102);
+
+//additional text
+text ("common upgrades", 13,31);
+text ("superior upgrades", 289,31);
+
+
+
+//baybux_collection_system
+//Charles made this
+mouseClicked = function() {if(mouseY>100&&mouseY<250&&mouseX>150&&mouseX<250){baybux+=perclickbb;} if(baybiglevel===1&&mouseY>40&&mouseY<98&&mouseX>0&&mouseX<100&&baybux>499){baybiglevel+=1;baybig+=50;perclickbb+=perclickbb*2-1;baybux-=500;
+}
+if(mouseX>-1&&mouseX<101&&mouseY>100&&mouseY<159&&baybux>microbotcost-1){baybuxps+=0.5;baybux-=microbotcost;microbotcost+=10%microbotcost; }
+//Marshall made this
+if (mouseX>-1&&mouseX<101&&mouseY>168&&mouseY<210&&baybux>EMTcost-1){baybuxps+=4;baybux-=EMTcost;EMTcost+=30%EMTcost;}
+if (mouseX>-1&&mouseX<98&&mouseY>220&&mouseY<278&&baybux>fasterCcost-1){baybuxps+=11.5;baybux-=fasterCcost; fasterCcost+=60%fasterCcost;}
+if (mouseX>-1&&mouseX<98&&mouseY>280&&mouseY<334&&baybux>FmedK-1){baybuxps+=20;baybux-=FmedK;FmedK+=1000%FmedK;}
+if (mouseX<389&&mouseX>229&&mouseY>31&&mouseY<97&&baybux>Supgrade1Cost-1){baybuxps+=75;baybux-=Supgrade1Cost; Supgrade1Cost+=1000%Supgrade1Cost;}
+if (mouseX<890&&mouseX>289&&mouseY>94&&mouseY<156&&baybux>Supgrade2Cost-1){baybuxps+=125;baybux-=Supgrade2Cost; Supgrade2Cost+=1000%Supgrade2Cost;}
+};
+baybux+=baybuxps*0.05;
+text("click me!",180,baybig+210);
+
+//upgrade_baybig
+if(baybiglevel===1){
+fill(252, 252, 252);
+rect(0,40,100,58);
+fill(3, 0, 0);
+text("bigger baymax",0,59);
+text('500 '+ "baybux",0,74);
+}
+
+//ugrade_microbot
+fill (247, 242, 242);
+rect (0,100,100,58);
+fill (0, 0, 0);
+text ("microbot",0,125);
+text (microbotcost+" baybux",0,140);
+
+//cords
+//text("Mouse cords " + mouseX,264,365);text(","+mouseY,358,365);
+
+//upgrade_EMT
+fill (247, 242, 242);
+rect (0,160,100,58);
+fill (0, 0, 0);
+text ("enhace med tech",0,180);
+text (EMTcost +" baybux",0,197);
+//baybuxps display
+text ("baybux per second:",149,293);
+text (baybuxps*2,206,304);
+
+//fasterC
+fill(252, 252, 252);
+rect (0,221,100,58);
+fill(0, 0, 0);
+text ("faster computing", 0,239);
+text (fasterCcost + " baybux", 0,256);
+
+//upgrade5
+fill(252, 252, 252);
+rect (0,282,100,58);
+
+fill (0, 0, 0);
+text ("futuristic med kits",3,301);
+text (FmedK + " baybux",3,316);
+
+
+
+//S upgrade1
+fill(252, 252, 252);
+rect (289,36,100,58);
+fill(0, 0, 0);
+text("superior microbots", 290,52);
+text (Supgrade1Cost +" baybux",290,79);
+
+
+//S upgrade2
+fill(255, 255, 255);
+rect (289,98,100,58);
+textSize(10);
+fill(0, 0, 0);
+text ("bayCoin investment", 295,118);
+textSize(12);
+text(Supgrade2Cost+" baybux",297,146);
+
+
+
+
+
+
+
+
+fill (194, 194, 194);
+rect (8,366,20,30);
+fill (255, 255, 0);
+ellipse (18,366,30,30);
+fill (0, 0, 0);
+line (24,377,24,362);
+line (15,377,15,362);
+//credits                                                                               Charles friend, The Beginning helper/BETA tester. Marshall Brayton, head dev. Brayden Nichols, BETA tester1. Isaiah Stayner, BETA tester2. Talon Heinbeck, BETA tester3. Jack Watson, BETA tester4. Lilian Simon, TESTER OF TESTERS. bannana :)
+fill (0, 0, 0);
+textSize (12);
+text ("All credit goes to me, my testers, helpers, and others. :)",38,363);
+text ("Check out other games by 11 Year Studios!", 49,389);
+
+};
+
+</script>
