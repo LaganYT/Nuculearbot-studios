@@ -1,0 +1,1118 @@
+<title>game name</title>
+<script src="/p5.js"></script>
+<script src="/p5.min.js"></script>
+<script>
+ function setup() { 
+  createCanvas(windowWidth, windowHeight);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+if(0===0){
+// var list
+var archersowned = archersowned;
+var archercost = archercost;
+var orgearchersowned = orgearchersowned;
+var orgearcherscost = orgearcherscost;
+var damagepersecond = damagepersecond;
+var swordmansowned = swordmansowned;
+var swordsmancost = swordsmancost;
+var brutesowned = brutesowned;
+var brutecost = brutecost;
+var orgeswordmansowned = orgeswordmansowned;
+var orgeswordsmancost = orgeswordsmancost;
+var clicks = clicks;
+var stage = stage;
+var Clickdamage = Clickdamage;
+var Clickupgradecost = Clickupgradecost;
+var coins = coins;
+var gems = gems;
+var screen = 1;
+var x = -75;
+var y = 200;
+
+if(Clickupgradecost===undefined){
+Clickupgradecost=100;
+}
+if(Clickdamage===undefined){
+Clickdamage=1;
+}
+if(archersowned===undefined){
+archersowned=0;
+}
+if(archercost===undefined){
+archercost=200;
+}
+if(orgearchersowned===undefined){
+orgearchersowned=0;
+}
+if(orgearcherscost===undefined){
+orgearcherscost=1500;
+}
+if(brutesowned===undefined){
+brutesowned=0;    
+}
+if(brutecost===undefined){
+brutecost=500;    
+}
+if(damagepersecond===undefined){
+damagepersecond=0;
+}
+if(swordsmancost===undefined){
+swordsmancost=50;
+}
+if(swordmansowned===undefined){
+swordmansowned=0;
+}
+if(orgeswordmansowned===undefined){
+orgeswordmansowned=0;
+}
+if(orgeswordsmancost===undefined){
+orgeswordsmancost=1000;
+}
+if(stage===undefined){
+stage=1;
+}
+if(coins===undefined){
+coins=0;
+}
+if(gems===undefined){
+gems=0;
+}
+if(clicks===undefined){
+clicks=15;  
+}
+// change speed for train to go faster
+var speed = 1;
+// driving train
+draw= function(){
+clicks-=damagepersecond*0.02;
+background(0, 255, 255);
+fill(255, 0, 0);
+rect(x-25,y-25,50,25);
+fill(0, 0, 0);
+ellipse(x-15,205,15,15);
+ellipse(x+15,205,15,15);
+triangle(x+25,y-25,x+25,200,x+50,y);
+rect(x+13,y-33,7,7);
+rect(x+11,y+-40,11,7);
+fill(255, 0, 0);
+rect(x-90,175,50,25);
+fill(0, 0, 0);
+ellipse(x-50,205,15,15);
+ellipse(x-80,205,15,15);
+x+=speed;
+rect(x-40,197,15,3);
+textSize(13);
+fill(255, 255, 0);
+text("Studios",x-23,190);
+text("Bot",x-76,190);
+fill(255, 0, 0);
+rect(x-155,175,50,25);
+fill(0, 0, 0);
+ellipse(x-115,205,15,15);
+ellipse(x-145,205,15,15);
+fill(255, 255, 0);
+text("Neclear",x-152,190);
+fill(0, 0, 0);
+rect(x-105,197,15,3);
+// end intro
+if(x>370){screen=2;}
+// stuff above is intro
+
+// bad guy 1   
+if(screen===2&&stage<=100){
+background(255, 255, 255);
+fill(0, 0, 0);
+text("clicks="+round(clicks),15,15);
+fill(255, 0, 0);
+ellipse(200,200,150,150);
+fill(0, 225, 255);
+ellipse(175,180,25,25);
+ellipse(225,180,25,25);
+fill(255, 0, 0);
+arc(200,215,75,50,1,180);
+strokeWeight(12);
+point(200,200);
+fill(0, 0, 0);
+text("stage="+stage,15,30);
+text("dps="+damagepersecond,15,45);
+text("coins="+round(coins),325,15);
+text("gems="+round(gems),325,30);
+}
+//bad guy 2
+if(screen===2&&stage<=200&&stage>=101){
+background(0, 0, 0);
+fill(255, 255, 255);
+text("clicks="+round(clicks),15,15);
+strokeWeight(12);
+fill(255, 0, 0);
+ellipse(200,200,150,150);
+fill(0, 225, 255);
+ellipse(175,180,25,25);
+ellipse(225,180,25,25);
+fill(255, 0, 0);
+arc(200,215,75,50,1,180);
+point(200,200);
+fill(255, 255, 255);
+text("stage="+stage,15,30);
+text("dps="+damagepersecond,15,45);
+text("coins="+round(coins),325,15);
+text("gems="+round(gems),325,30);    
+}
+
+if(screen===2&&stage<=100){
+fill(0, 0, 0);
+textSize(11);
+text("Click Damage="+round(Clickdamage),15,110);
+text(""+round(Clickupgradecost),25,130);    
+// buy swordman
+fill(0, 0, 0);
+textSize(11);
+text("swordmen="+swordmansowned,325,55);
+text(""+round(swordsmancost),350,80);
+// buy archer
+fill(0, 0, 0);
+textSize(11);
+text("archer="+archersowned,325,110);
+text(""+round(archercost),350,130);
+// buy brute
+fill(0, 0, 0);
+textSize(11);
+text("brute="+brutesowned,325,165);
+text(""+round(brutecost),350,185);
+// buy orgeswordman
+fill(0, 0, 0);
+textSize(11);
+text("OSM="+orgeswordmansowned,325,220);
+text(""+round(orgeswordsmancost),350,240);
+// buy orgearcher
+fill(0, 0, 0);
+textSize(11);
+text("orge archer="+orgearchersowned,325,275);
+text(""+round(orgearcherscost),350,300);
+}
+
+// clicking him
+mouseClicked = function(){
+if(screen===2&&mouseX<250&&mouseX>150&&mouseY<250&&mouseY>150){
+clicks-=Clickdamage;}
+if(coins>=swordsmancost&&screen===2&&mouseX>330&&mouseX<380&&mouseY>50&&mouseY<100){
+coins-=swordsmancost;
+swordmansowned+=1;
+damagepersecond+=1;
+swordsmancost*=1.5;
+}
+if(coins>=archercost&&screen===2&&mouseX>330&&mouseX<380&&mouseY>100&&mouseY<125){
+archersowned+=1;
+damagepersecond+=5;
+coins-=archercost;
+archercost*=1.5;
+}
+if(coins>=brutecost&&screen===2&&mouseX>330&&mouseX<380&&mouseY>150&&mouseY<150){
+brutesowned+=1;
+damagepersecond+=7;
+coins-=brutecost;
+brutecost*=1.5;
+}
+if(coins>=orgeswordsmancost&&screen===2&&mouseX>330&&mouseX<380&&mouseY>200&&mouseY<175){
+orgeswordmansowned+=1;
+damagepersecond+=20;
+coins-=orgeswordsmancost;
+orgeswordsmancost*=1.5;
+}
+if(coins>=orgearcherscost&&screen===2&&mouseX>330&&mouseX<380&&mouseY>250&&mouseY<200){
+orgearchersowned+=1;
+damagepersecond+=25;
+coins-=orgearcherscost;
+orgearcherscost*=1.5;
+}
+if(coins>=Clickupgradecost&&screen===2&&mouseX>15&&mouseX<75&&mouseY>100&&mouseY<125){
+Clickdamage+=1;
+coins-=Clickupgradecost;
+Clickupgradecost*=1.5;
+}
+};
+
+
+
+// win
+if(stage===1001&&clicks<1){
+background(0, 0, 0);
+strokeWeight(1);
+fill(25, 255, 0);
+text("You Beet The Game",135,150);
+text("Click Fighter",150,175);
+fill(255, 255, 0);
+text("By NuclearBot Studios",135,200);
+fill(255, 255, 0);
+ellipse(272,191,20,20);
+fill(153, 153, 153);
+rect(264,198,15,15);}
+// stage 2
+if(100===100){
+if(stage===1&&clicks<1){
+stage+=1;
+clicks+=25;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15);
+coins+=20;
+}
+// stage 3
+if(stage===2&&clicks<1){
+stage+=1;
+clicks+=30;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15);
+coins+=20;
+}
+// stage 4
+if(stage===3&&clicks<1){
+stage+=1;
+clicks+=25;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15);    
+coins+=20;
+}
+// stage 5
+if(stage===4&&clicks<1){
+stage+=1;
+clicks+=30;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===10){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+
+if(stage===5&&clicks<1){
+stage+=1;
+clicks+=25;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===6&&clicks<1){
+stage+=1;
+clicks+=30;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===7&&clicks<1){
+stage+=1;
+clicks+=25;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===8&&clicks<1){
+clicks+=30;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===9&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=20;
+}
+if(stage===10&&clicks<1){
+stage+=1;
+clicks+=75;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=100;
+gems+=3;
+}
+if(stage===11&&clicks<1){
+clicks+=100;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===12&&clicks<1){
+stage+=1;
+clicks+=75;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===13&&clicks<1){
+clicks+=100;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===14&&clicks<1){
+clicks+=75;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===15&&clicks<1){
+clicks+=100;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===16&&clicks<1){
+clicks+=75;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===17&&clicks<1){
+clicks+=100;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===18&&clicks<1){
+clicks+=75;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===19&&clicks<1){
+clicks+=300;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+gems+=10;
+}
+if(stage===20){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===20&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=200;
+gems+=3;
+}
+if(stage===21&&clicks<1){
+clicks+=175;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===22&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===23&&clicks<1){
+clicks+=175;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===24&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===25&&clicks<1){
+clicks+=175;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===26&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===27&&clicks<1){
+clicks+=175;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===28&&clicks<1){
+clicks+=150;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===29&&clicks<1){
+clicks+=500;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=30;
+}
+if(stage===30){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===30&&clicks<1){
+clicks+=225;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=500;
+gems+=3;
+}
+if(stage===31&&clicks<1){
+clicks+=250;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===32&&clicks<1){
+clicks+=225;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===33&&clicks<1){
+clicks+=250;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===34&&clicks<1){
+clicks+=225;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===35&&clicks<1){
+clicks+=250;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===36&&clicks<1){
+clicks+=225;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===37&&clicks<1){
+clicks+=250;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===38&&clicks<1){
+clicks+=250;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===39&&clicks<1){
+clicks+=750;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+if(stage===40){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+
+if(stage===50){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===60){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===70){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===80){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===90){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===100){
+fill(0, 0, 0);
+textSize(13);
+text("BOSS LEVEL",150,15);
+}
+if(stage===40&&clicks<1){
+clicks+=300;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=750;
+}
+if(stage===41&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===42&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===43&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===44&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===45&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===46&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===47&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===48&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===49&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===50&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===51&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===52&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===53&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===54&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===55&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===56&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===57&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===58&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===59&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===60&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===61&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===62&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===63&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===64&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===65&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===66&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===67&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===68&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===69&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+
+if(stage===70&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===71&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===72&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===73&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===74&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===75&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===76&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===77&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===78&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===79&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===80&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===81&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===82&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===83&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===84&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===85&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===86&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===87&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===88&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===89&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===90&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===91&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===92&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===93&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===94&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===95&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===96&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===97&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===98&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===99&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===100&&clicks<1){
+clicks+=315;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+if(stage===101&&clicks<1){
+clicks+=3000;
+stage+=1;
+fill(0, 0, 0);
+text("clicks="+clicks,15,15); 
+coins+=50;
+}
+
+}
+}
+if(200===200){
+
+}
+
+
+
+};
+}
+</script>
