@@ -2,6 +2,12 @@
 <script src="/p5.js"></script>
 <script src="/p5.min.js"></script>
 <script>
+         function setup() { 
+  createCanvas(windowWidth, windowHeight);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
 var acorns=0;
 var sap=0;
 var FA =0;
