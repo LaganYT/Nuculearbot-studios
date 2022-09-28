@@ -1,0 +1,71 @@
+<title>Oil Industry</title>
+<script src="/p5.js"></script>
+<script src="/p5.min.js"></script>
+<script>
+ function setup() { 
+  createCanvas(windowWidth, windowHeight);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+var oil =0;
+var oilps=1;
+var cash =0;
+var UP1cost=100;
+var UP2cost = 200;
+var CASHperSELL=1;
+
+draw = function() {
+background (64, 66, 1);
+
+noStroke();
+//oil extractor
+fill (148, 142, 142);
+rect (150,200,100,2000);
+fill (82, 79, 79);
+rect (190,0,20,200);
+rect (220,0,20,200);
+rect (240,300,100,20);
+rect (340,300,20,100);
+fill (250, 238, 5);
+rect(150,230,50,20);
+fill (82,79,79);
+rect (80,250,75,20);
+rect (80,250,20,150);
+//oil display/cash display
+fill (0,0,0);
+rect(-1,375,100000,100);
+text("oil "+floor(oil),157,321,1570,102);
+
+text ("cash " +floor (cash),157,306,1570,102);
+//cash collect
+oil+=oilps*0.025;
+mouseClicked = function () {
+if(mouseX>-1&&mouseX<101&&mouseY>100&&mouseY<159){cash+=oil*CASHperSELL;oil-=oil; }
+if (mouseX>-1&&mouseX<101&&mouseY>168&&mouseY<210&&cash>UP1cost-1){oilps+=0.5;cash-=UP1cost;UP1cost+=10%UP1cost;}
+if (mouseX>-1&&mouseX<101&&mouseY>218&&mouseY<271&&cash>UP2cost-1){CASHperSELL+=1;cash-=UP2cost;UP2cost+=20%UP2cost;}
+};
+text (mouseX,325,20);
+text ("," + mouseY,350,20);
+//sell oil
+fill (168, 158, 158);
+ rect(0,100,80,58);
+ fill (0,0,0);
+ text ("sell oil",8, 120);
+ text ("1 cash a piece", 1,135);
+ 
+ //upgrade1
+fill (168,158,158);
+rect (0,160,80,58);
+fill (0, 0, 0);
+text ("faster fuels" , 8,190);
+text ( UP1cost + " cash",8,210);
+
+//upgrade2
+fill (168,158,158);
+rect (0,220,80,58);
+fill (0, 0, 0);
+text ("rich oil",8,240);
+text (UP2cost + " cash",8,258);
+};
+</script>
