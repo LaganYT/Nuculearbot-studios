@@ -1,0 +1,77 @@
+<title>Block Blaster</title>
+<script src="/p5.js"></script>
+<script src="/p5.min.js"></script>
+<script>
+ function setup() { 
+  createCanvas(windowWidth, windowHeight);
+} 
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+var screen=1;
+var x=0;
+var y=200;
+var bean =ellipse(x,210,20,20);
+var points=0;
+var y2=137;
+var pointsPerHit=1;
+var PBcost=20;
+
+
+draw= function() {
+   
+   
+    stroke(5);
+    
+    
+    if (screen===1){
+        background(0, 255, 213);
+    fill(255, 0, 0);
+    rect(10,y,20,20);
+   rect(24,y+5,30,9);
+    
+     
+    }
+    keyPressed=function(){
+    if (key.toString() === ' '){screen=2;x=10;}
+    
+    };
+    
+    if(keyCode ===UP&&keyIsPressed){y-=3;}
+    if(keyCode ===DOWN&&keyIsPressed){y+=3;}
+    
+    if (screen===2){background(0, 255, 213);fill(51, 255, 0);rect(x,y+5,30,10);fill(255, 0, 0);
+    rect(10,y,20,20);fill(43, 255, 0);x+=3;fill(255, 0, 0);rect(24,y+5,30,9);}
+    if(x===369){x=10;screen=1;}
+    
+    fill(255, 0, 0);
+    rect(372,y2,29,100);
+    fill(255, 255, 255);
+    rect(370,y2+28,20,50);
+    fill(255, 0, 0);
+    rect(372,y2+48,10,10);
+    fill(77, 255, 0);
+    rect(-10,384,2000,20);
+    fill(0, 51, 255);
+    rect(20,332,100,58);
+    fill(0, 0, 0);
+    text("point buff",33,355);
+    text(PBcost+" points",33,373);
+    
+    
+    
+    fill(0, 0, 0);
+    text(mouseX,20,20);
+     text(mouseY,56,20);
+    text(points+" points",200,369);
+    
+    if(y>149&&y<197&&x===369+10){points+=1*pointsPerHit;y2+=100;}
+     if(y>200&&y<300&&x===369+10){points+=1*pointsPerHit;y2-=200;}
+     if(y>40&&y<100&&x===369+10){points+=1*pointsPerHit;y2+=100;}
+    
+    mouseClicked=function(){
+    if(mouseX>18&&mouseX<121&&mouseY<387&&mouseY>331&&points>PBcost-1){pointsPerHit+=1;points-=PBcost;PBcost+=10%PBcost;}
+    };
+    
+};
+</script>
