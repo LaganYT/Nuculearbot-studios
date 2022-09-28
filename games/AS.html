@@ -1,0 +1,73 @@
+<title>game name</title>
+<script src="/p5.js"></script>
+<script src="/p5.min.js"></script>
+<script>
+var acorns=0;
+var sap=0;
+var FA =0;
+var FAcost=10;
+var Egcost = 200;
+draw = function() {
+        background (0, 204, 255);
+        noStroke();
+        
+        fill(0, 0, 0);
+        //acons/sap diplay
+        textSize(14);
+        text("acorns "+floor(acorns),18,16,1570,102);
+        text("sap "+floor(sap),18,33,1570,102);
+        //tree
+        fill (255, 89, 0);
+        rect (200,230,50,212);
+        fill (22, 112, 4);
+        ellipse (221,200,100,100);
+        ellipse (174,210,100,76);   
+        ellipse (278,210,100,76);
+        ellipse (221,200,125,125);
+        fill (0, 0, 0);
+        textSize(14);
+        text ("click here!", 190,212);
+        textSize(11);
+        text("Info: Its is acorn season! shake the tree and it'll rain 'corns!",109,14);
+        textSize (23);
+        text ("Tree",202,340);
+        text(":)" ,217,367);
+        fill (0, 255, 17);
+        rect (-10,390,100000,30);
+        //cords
+        textSize(14);
+        text ("mouse pos "+mouseX,228,40); text("," + mouseY ,328,40);
+        //acorns collect
+        mouseClicked = function () {if (mouseX<283&&mouseX>155&&mouseY>129&&mouseY<259){acorns+=1;}
+        if (mouseX>-1&&mouseX&&mouseX<103&&mouseY>51&&mouseY<122&&acorns>1){sap+=acorns/2;acorns-=acorns;} if (mouseX>-1&&mouseX<101&&mouseY>119&&mouseY<179&&sap>FAcost-1){FA+=1;sap-=FAcost;FAcost+=50%FAcost;}
+        if (mouseX>-1&&mouseX<100&&mouseY>182&&mouseY<248&&sap>Egcost-1){FA+=10;sap-=Egcost;Egcost+=75%Egcost;}
+        };
+        
+        acorns+=FA*0.025;
+        
+        //sap press
+        fill (255, 132, 0);
+        rect(0,66,100,58);
+        fill (0, 0, 0);
+        textSize(14);
+        text ("press acorns",8,86);
+        text("to sap",8,102);
+        
+
+        //FAupgrade
+        fill (255, 132, 0);
+        rect(0,126,100,58);
+        fill(0, 0, 0);
+        text("falling Acorns",8,145);
+        text (FAcost+" sap",8,160);
+        
+        //ethereal growth
+        fill (255, 132, 0);
+        rect(0,188,100,58);
+        fill (0, 0, 0);
+        text ("ethereal growth", 2,203);
+        text (Egcost + " sap" ,2,222);
+        
+};
+
+</script>
